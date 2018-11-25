@@ -203,7 +203,7 @@ namespace Visa.Marketter.Models {
                 ci.AddClaim(new Claim("user_type", user.type.ToString()));
                 ci.AddClaim(new Claim("name", user.name));
 
-                var access_token = handler.CreateEncodedJwt(issuer: "Visa", audience: "Visa Users", subject: ci, issuedAt: now, notBefore: now, expires: now + TimeSpan.FromHours(1), signingCredentials: sc);
+                var access_token = handler.CreateEncodedJwt(issuer: "Visa", audience: "Visa Users", subject: ci, issuedAt: now, notBefore: now, expires: now + TimeSpan.FromHours(24), signingCredentials: sc);
 
                 return new OAuth2TokenResponse { access_token = access_token, expires_in = (3600 * 1) - 1, token_type = "Bearer", refresh_token = _str_refresh_token };
             } else if (grant_type == "refresh_token") {
@@ -237,7 +237,7 @@ namespace Visa.Marketter.Models {
 
                 var handler = new JwtSecurityTokenHandler();
 
-                var access_token = handler.CreateEncodedJwt(issuer: "Visa", audience: "Visa Users", subject: ci, notBefore: now, issuedAt: now, expires: now + TimeSpan.FromHours(1), signingCredentials: sc);
+                var access_token = handler.CreateEncodedJwt(issuer: "Visa", audience: "Visa Users", subject: ci, notBefore: now, issuedAt: now, expires: now + TimeSpan.FromHours(24), signingCredentials: sc);
 
                 return new OAuth2TokenResponse { access_token = access_token, expires_in = (3600 * 1) - 1, token_type = "Bearer" };
             } else {
