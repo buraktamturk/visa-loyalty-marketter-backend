@@ -13,7 +13,7 @@ namespace Visa.Marketter.Controllers {
         public async Task<JToken> all() {
             using (var visaHandler = new HttpClientHandler()) {
                 visaHandler.ClientCertificateOptions = ClientCertificateOption.Manual;
-                visaHandler.ClientCertificates.Add(new X509Certificate2("/Users/buraktamturk/Downloads/visa.pfx", "abcd"));
+                visaHandler.ClientCertificates.Add(new X509Certificate2("visa.pfx", "abcd"));
 
                 using (var http = new HttpClient(visaHandler)) {
                     http.DefaultRequestHeaders.Add("Authorization", "Basic ME85TTdFVTM1SVpEWTRDSzBaWjIyMTQtMGFIejJFYThRbGo5RDI2QjZqcm1IVFVpODpUQ2kySGltNk0=");
